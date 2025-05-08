@@ -24,8 +24,9 @@ async function getKampanya(slug: string): Promise<Kampanya | undefined> {
   return kampanyalar.find((k) => k.slug === slug);
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const kampanya = await getKampanya(params.slug);
+export async function generateMetadata({params}: {params: Promise<{ slug: string }>}): Promise<Metadata> {
+  const { slug } = await params;
+  const kampanya = await getKampanya(slug);
   if (!kampanya) {
     return {
       title: "Kampanya Bulunamadı | Sigorka",
@@ -60,8 +61,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function KampanyaDetayPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function KampanyaDetayPage({params}: {params: Promise<{ slug: string }>}) {
+  const { slug } = await params;
   const kampanya = await getKampanya(slug);
   if (!kampanya) notFound();
   return (

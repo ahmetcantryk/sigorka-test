@@ -22,7 +22,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => (
           ) : (
             <span itemProp="name">{item.name}</span>
           )}
-          <meta itemProp="position" content={idx + 1} />
+          <meta itemProp="position" content={String(idx + 1)} />
         </li>
       ))}
     </ol>

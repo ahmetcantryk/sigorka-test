@@ -11,11 +11,14 @@ interface Category {
 }
 
 interface Blog {
+  id?: number;
   title: string;
   date: string;
   slug?: string;
   content?: string;
   image?: string;
+  imageUrl?: string; 
+  summary?: string;
   categories?: Category[];
 }
 
@@ -77,7 +80,13 @@ export default async function BlogPage() {
       {promoBlogs.length > 0 && (
         <section className="blog-promo mb-5">
           <div className="container container--sm">
-            <BlogPromoSlider promoBlogs={promoBlogs} />
+            <BlogPromoSlider promoBlogs={promoBlogs.map(blog => ({
+              id: blog.id || 0,
+              title: blog.title,
+              summary: blog.summary || blog.content?.slice(0, 100) || '',
+              imageUrl: blog.imageUrl || blog.image || '/images/no-image.jpg',
+              slug: blog.slug
+            }))} />
           </div>
         </section>
       )}

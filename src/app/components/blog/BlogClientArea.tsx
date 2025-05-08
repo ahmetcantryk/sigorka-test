@@ -27,7 +27,15 @@ export default function BlogClientArea({ blogs, categories }: { blogs: Blog[], c
     <>
       <BlogNav categories={categories} selectedCategoryId={selectedCategoryId} onCategoryChange={setSelectedCategoryId} />
       <h3 className="blog-section__title">{h3Title}</h3>
-      <BlogList blogs={blogs} selectedCategoryId={selectedCategoryId} />
+      <BlogList blogs={blogs.map(blog => ({
+        id: blog.id || 0,
+        title: blog.title,
+        summary: blog.htmlContent?.slice(0, 100) || '',
+        imageUrl: blog.imageUrl || '/images/no-image.jpg',
+        date: blog.date,
+        categories: blog.categories,
+        slug: blog.slug
+      }))} selectedCategoryId={selectedCategoryId} />
     </>
   );
 } 

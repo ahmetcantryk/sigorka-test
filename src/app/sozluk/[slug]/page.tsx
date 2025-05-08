@@ -14,9 +14,9 @@ interface DictionaryItem {
 }
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  }
+  }>
 }
 
 // Next.js SSG için static paramlar
@@ -26,7 +26,8 @@ export async function generateStaticParams() {
 
 // Dinamik metadata oluşturma
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const selectedWord = dictionary.find((item) => item.slug === params.slug);
+  const { slug } = await params;
+  const selectedWord = dictionary.find((item) => item.slug === slug);
   
   if (!selectedWord) {
     return {
@@ -58,9 +59,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 /**
  * @param {{ params: { slug: string } }} props
  */
-export default async function SozlukDetayPage(paramsPromise: Promise<{ params: { slug: string } }>) {
-  const { params } = await paramsPromise;
-  const { slug } = params;
+export default async function SozlukDetayPage({params}: {params: Promise<{ slug: string }>}) {
+  const { slug } = await params;
   const selectedWord = dictionary.find((item) => item.slug === slug);
   
   // Önerilen kelimeleri rastgele seç
