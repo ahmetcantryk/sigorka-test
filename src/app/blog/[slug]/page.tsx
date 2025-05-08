@@ -3,6 +3,7 @@ import '../../../styles/main.min.css';
 import '../../../styles/subpage.min.css';
 import '../../../styles/armor.css';
 import Image from 'next/image';
+import { Metadata } from 'next';
 
 import BlogCard from '../../components/blog/BlogCard';
 import { slugify } from '../../components/blog/slugify';
@@ -19,11 +20,52 @@ interface Blog {
   slug?: string;
   imageUrl?: string;
   htmlContent?: string;
+  summary?: string;
   categories?: Category[];
 }
 
-export default async function BlogDetailPage({params}: {params: Promise<{ id: string }>}) {
-  const { id: slug } = await params;
+export async function generateMetadata({params}: {params: Promise<{ slug: string }>}): Promise<Metadata> {
+  const { slug } = await params;
+  const res = await fetch('http://localhost:3000/content/blogs.json', { cache: 'no-store' });
+  const blogs = await res.json() as Blog[];
+  const blog = blogs.find((b: Blog) => (b.slug || slugify(b.title)) === slug);
+  
+  if (!blog) {
+    return {
+      title: "Blog Yazısı Bulunamadı | Sigorka",
+      description: "Aradığınız blog yazısı bulunamadı. Güncel yazılarımızı incelemek için sitemizi ziyaret edin."
+    };
+  }
+
+  return {
+    title: `${blog.title} | Sigorka Blog`,
+    description: blog.summary || `${blog.title} hakkında detaylı bilgi için Sigorka blog sayfamızı ziyaret edin.`,
+    alternates: {
+      canonical: `https://sigorka.com/blog/${slug}`
+    },
+    openGraph: {
+      title: `${blog.title} | Sigorka Blog`,
+      description: blog.summary || `${blog.title} hakkında detaylı bilgi için Sigorka blog sayfamızı ziyaret edin.`,
+      url: `https://sigorka.com/blog/${slug}`,
+      type: "article",
+      images: [
+        {
+          url: blog.imageUrl || '/images/no-image.jpg',
+          alt: blog.title
+        }
+      ]
+    },
+    twitter: {
+      title: `${blog.title} | Sigorka Blog`,
+      description: blog.summary || `${blog.title} hakkında detaylı bilgi için Sigorka blog sayfamızı ziyaret edin.`,
+      card: "summary_large_image",
+      images: [blog.imageUrl || '/images/no-image.jpg']
+    }
+  };
+}
+
+export default async function BlogDetailPage({params}: {params: Promise<{ slug: string }>}) {
+  const { slug } = await params;
   const res = await fetch('http://localhost:3000/content/blogs.json', { cache: 'no-store' });
   const blogs = await res.json() as Blog[];
   const blog = blogs.find((b: Blog) => (b.slug || slugify(b.title)) === slug);

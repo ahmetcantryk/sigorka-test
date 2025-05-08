@@ -1,10 +1,12 @@
 "use client";
-import dynamic from 'next/dynamic';
-import 'owl.carousel/dist/assets/owl.carousel.min.css';
-import 'owl.carousel/dist/assets/owl.theme.default.min.css';
+import { useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import Image from 'next/image';
-
-const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
 interface Blog {
   id: number;
@@ -19,41 +21,59 @@ interface BlogPromoSliderProps {
 }
 
 export default function BlogPromoSlider({ promoBlogs }: BlogPromoSliderProps) {
+  const swiperRef = useRef<SwiperType | null>(null);
+
   if (!promoBlogs?.length) return null;
   return (
-    <OwlCarousel
-      className="owl-theme"
-      items={1}
-      loop
-      autoplay
-      autoplayTimeout={3000}
-      nav
-      dots
-      navText={['<span class="icon-angle-left"></span>', '<span class="icon-angle-right"></span>']}
-      responsive={{
-        0: { items: 1 },
-        768: { items: 1 },
-        992: { items: 1 }
+    <Swiper
+      modules={[Autoplay, Navigation, Pagination]}
+      spaceBetween={0}
+      slidesPerView={1}
+      loop={true}
+      // autoplay={{
+      //   delay: 3000,
+      //   disableOnInteraction: false,
+      // }}
+      navigation={{
+        prevEl: '.blog-promo .owl-nav .owl-prev',
+        nextEl: '.blog-promo .owl-nav .owl-next',
       }}
-      margin={10}
+      pagination={{
+        el: '.blog-promo .owl-dots',
+        clickable: true,
+        renderBullet: function (index, className) {
+          return `<button class="${className} owl-dot"><span></span></button>`;
+        },
+      }}
+      className="blog-promo__slider owl-theme"
+      onSwiper={(swiper: SwiperType) => {
+        swiperRef.current = swiper;
+      }}
     >
       {promoBlogs.map((blog) => (
-        <div className="blog-promo__item" key={blog.id}>
-          <Image 
-            src={blog.imageUrl} 
-            className="blog-promo__item-img" 
-            alt={blog.title} 
-            width={800}
-            height={450}
-            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-          />
-          <div className="blog-promo__item-content">
-            <h3>{blog.title}</h3>
-            <p>{blog.summary}</p>
-            <a href={`/blog/${blog.slug || ''}`} target="_self" className="btn btn-outline">Devamını Oku</a>
+        <SwiperSlide key={blog.id}>
+          <div className="blog-promo__item">
+            <Image 
+              src={blog.imageUrl} 
+              className="blog-promo__item-img" 
+              alt={blog.title} 
+              width={800}
+              height={450}
+              style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+            />
+            <div className="blog-promo__item-content">
+              <h3>{blog.title}</h3>
+              <p>{blog.summary}</p>
+              <a href={`/blog/${blog.slug || ''}`} target="_self" className="btn btn-outline">Devamını Oku</a>
+            </div>
           </div>
-        </div>
+        </SwiperSlide>
       ))}
-    </OwlCarousel>
+      <div className="owl-nav">
+        <button className="owl-prev"><span className="icon-angle-left"></span></button>
+        <button className="owl-next"><span className="icon-angle-right"></span></button>
+      </div>
+      <div className="owl-dots"></div>
+    </Swiper>
   );
 } 

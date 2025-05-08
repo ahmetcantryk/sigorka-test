@@ -29,9 +29,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         <div className="blog-post__content">
           <h3 className="blog-post__title">{blog.title}</h3>
           <span className="blog-post__date">{blog.date}</span>
-          <p className="blog-post__summary">
-            {blog.summary}
-          </p>
+          <p className="blog-post__summary">{blog.summary}</p>
           <span className="blog-post__link">
             Devamını Oku <span className="icon-arrow-right"></span>
           </span>

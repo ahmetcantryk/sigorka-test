@@ -1528,17 +1528,25 @@
     margin: 0 0 30px
 }
 
-.blog-promo .owl-nav {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    right: 30px;
-    bottom: 75px;
-    width: 90px;
-    gap: 10px
+.blog-promo__slider {
+    position: relative;
+    overflow: hidden;
 }
 
-.blog-promo .owl-nav .owl-prev, .blog-promo .owl-nav .owl-next {
+.blog-promo .owl-nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none;
+}
+
+.blog-promo .owl-nav .owl-prev,
+.blog-promo .owl-nav .owl-next {
     width: 40px;
     height: 40px;
     border: 1px solid #fff !important;
@@ -1548,17 +1556,21 @@
     justify-content: center;
     color: #fff;
     outline: none !important;
-    -webkit-border-radius: 50% !important;
-    -moz-border-radius: 50% !important;
-    -ms-border-radius: 50% !important;
-    -o-border-radius: 50% !important;
+    pointer-events: auto;
+    background: transparent !important;
+    transition: all 0.3s ease;
 }
 
-.blog-promo .owl-nav .owl-prev span, .blog-promo .owl-nav .owl-next span {
-    color: #fff;
-    font-size: 12px
+.blog-promo .owl-nav .owl-prev:hover,
+.blog-promo .owl-nav .owl-next:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
 }
-.owl-theme .owl-nav [class*=owl-]:hover{background:transparent !important;}
+
+.blog-promo .owl-nav .owl-prev span,
+.blog-promo .owl-nav .owl-next span {
+    color: #fff;
+    font-size: 12px;
+}
 
 .blog-promo .owl-dots {
     display: flex;
@@ -1567,7 +1579,7 @@
     padding: 25px 0
 }
 
-.blog-promo .owl-dots .owl-dot {
+.blog-promo .owl-dot {
     width: 19px;
     height: 7px;
     border-radius: 5px;
@@ -1578,6 +1590,7 @@
     -webkit-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
     outline: none !important;
+    opacity: 1;
     position: relative
 }
 
@@ -1596,15 +1609,16 @@
     transition: all 0.3s ease-out
 }
 
-.blog-promo .owl-dots .owl-dot.active {
+.blog-promo .owl-dots .owl-dot.swiper-pagination-bullet-active {
     width: 51px;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
     -webkit-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out
+    transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
 }
 
-.blog-promo .owl-dots .owl-dot.active:before {
+.blog-promo .owl-dots .owl-dot.swiper-pagination-bullet-active:before {
     content: " ";
     width: 33px;
     height: 5px;

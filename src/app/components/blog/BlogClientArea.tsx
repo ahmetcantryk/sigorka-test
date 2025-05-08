@@ -16,6 +16,7 @@ interface Blog {
   imageUrl?: string;
   htmlContent?: string;
   categories?: Category[];
+  summary?: string;
 }
 
 export default function BlogClientArea({ blogs, categories }: { blogs: Blog[], categories: Category[] }) {
@@ -30,7 +31,7 @@ export default function BlogClientArea({ blogs, categories }: { blogs: Blog[], c
       <BlogList blogs={blogs.map(blog => ({
         id: blog.id || 0,
         title: blog.title,
-        summary: blog.htmlContent?.slice(0, 100) || '',
+        summary: blog.summary || '',
         imageUrl: blog.imageUrl || '/images/no-image.jpg',
         date: blog.date,
         categories: blog.categories,

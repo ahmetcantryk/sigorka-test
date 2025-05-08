@@ -333,7 +333,7 @@ export default function Header() {
               <Link href="/iletisim" className="main-nav__link">İletişim</Link>
             </li>
             <li className="main-nav__item">
-              <Link href="/insurer" className="main-nav__link main-nav__link--btn">Üye Girişi</Link>
+              <Link href="#" className="main-nav__link main-nav__link--btn">Üye Girişi</Link>
             </li>
           </ul>
         </div>
