@@ -91,7 +91,7 @@ export default async function BlogPage() {
       )}
       <section className="blog-section">
         <div className="container container--sm">
-          <BlogClientArea blogs={blogs} categories={categories} />
+          <BlogClientArea blogs={sorted} categories={categories} />
         </div>
       </section>
     </>

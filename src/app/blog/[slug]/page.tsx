@@ -139,7 +139,7 @@ export default async function BlogDetailPage({params}: {params: Promise<{ slug: 
             {similarBlogs.map((b) => <BlogCard key={b.id} blog={{
               id: String(b.id || 0),
               title: b.title,
-              summary: '',
+              summary: b.summary || '',
               imageUrl: b.imageUrl || '/images/no-image.jpg',
               slug: b.slug || slugify(b.title),
               date: b.date
