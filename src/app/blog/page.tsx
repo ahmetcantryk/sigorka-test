@@ -42,9 +42,8 @@ export const metadata = {
 };
 
 export default async function BlogPage() {
-  // Blogları serverda fetch et
-  const res = await fetch('https://sigorka-test.vercel.app/content/blogs.json', { cache: 'no-store' });
-  const blogs = await res.json() as Blog[];
+  // Statik import kullanarak JSON dosyasını getiriyoruz
+  const blogs = (await import('../../../public/content/blogs.json')).default as Blog[];
   // Tarihe göre sıralayıp en güncel 3 blogu promoBlogs olarak seç
   const sorted = blogs.slice().sort((a: Blog, b: Blog) => {
     const aylar = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];

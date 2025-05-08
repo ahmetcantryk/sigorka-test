@@ -26,8 +26,8 @@ interface Blog {
 
 export async function generateMetadata({params}: {params: Promise<{ slug: string }>}): Promise<Metadata> {
   const { slug } = await params;
-  const res = await fetch('https://sigorka-test.vercel.app/content/blogs.json', { next: { revalidate: 3600 } });
-  const blogs = await res.json() as Blog[];
+  // Statik import kullanarak JSON dosyasını getiriyoruz
+  const blogs = (await import('../../../../public/content/blogs.json')).default as Blog[];
   const blog = blogs.find((b: Blog) => (b.slug || slugify(b.title)) === slug);
   
   if (!blog) {
@@ -66,8 +66,8 @@ export async function generateMetadata({params}: {params: Promise<{ slug: string
 
 export default async function BlogDetailPage({params}: {params: Promise<{ slug: string }>}) {
   const { slug } = await params;
-  const res = await fetch('https://sigorka-project.vercel.app/content/blogs.json', { next: { revalidate: 3600 } });
-  const blogs = await res.json() as Blog[];
+  // Statik import kullanarak JSON dosyasını getiriyoruz
+  const blogs = (await import('../../../../public/content/blogs.json')).default as Blog[];
   const blog = blogs.find((b: Blog) => (b.slug || slugify(b.title)) === slug);
   if (!blog) return notFound();
 
