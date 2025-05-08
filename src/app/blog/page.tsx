@@ -43,7 +43,7 @@ export const metadata = {
 
 export default async function BlogPage() {
   // Blogları serverda fetch et
-  const res = await fetch('http://localhost:3000/content/blogs.json', { cache: 'no-store' });
+  const res = await fetch('https://sigorka-test.vercel.app/content/blogs.json', { cache: 'no-store' });
   const blogs = await res.json() as Blog[];
   // Tarihe göre sıralayıp en güncel 3 blogu promoBlogs olarak seç
   const sorted = blogs.slice().sort((a: Blog, b: Blog) => {

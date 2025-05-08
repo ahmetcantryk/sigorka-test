@@ -26,7 +26,7 @@ interface Blog {
 
 export async function generateMetadata({params}: {params: Promise<{ slug: string }>}): Promise<Metadata> {
   const { slug } = await params;
-  const res = await fetch('http://localhost:3000/content/blogs.json', { cache: 'no-store' });
+  const res = await fetch('https://sigorka-test.vercel.app/content/blogs.json', { cache: 'no-store' });
   const blogs = await res.json() as Blog[];
   const blog = blogs.find((b: Blog) => (b.slug || slugify(b.title)) === slug);
   
