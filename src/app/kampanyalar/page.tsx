@@ -4,6 +4,9 @@ import { promises as fs } from 'fs';
 import Banner from '../components/common/Banner';
 import Breadcrumb from '../components/common/Breadcrumb';
 import '../../styles/subpage.min.css';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Metadata } from 'next';
 
 export type Kampanya = {
   slug: string;
@@ -19,6 +22,25 @@ async function getKampanyalar(): Promise<Kampanya[]> {
   return JSON.parse(data);
 }
 
+export const metadata: Metadata = {
+  title: "Sigorta Kampanyaları | Sigorka Fırsatları",
+  description: "Sigorka'nın avantajlı sigorta kampanyalarını keşfedin. Size özel indirimler, hediyeler ve fırsatlardan yararlanın. Hemen kampanyaları inceleyin!",
+  alternates: {
+    canonical: "https://sigorka.com/kampanyalar"
+  },
+  openGraph: {
+    title: "Sigorta Kampanyaları | Sigorka Fırsatları",
+    description: "Sigorka'nın avantajlı sigorta kampanyalarını keşfedin. Size özel indirimler, hediyeler ve fırsatlardan yararlanın. Hemen kampanyaları inceleyin!",
+    url: "https://sigorka.com/kampanyalar",
+    type: "website"
+  },
+  twitter: {
+    title: "Sigorta Kampanyaları | Sigorka Fırsatları",
+    description: "Sigorka'nın avantajlı sigorta kampanyalarını keşfedin. Size özel indirimler, hediyeler ve fırsatlardan yararlanın. Hemen kampanyaları inceleyin!",
+    card: "summary_large_image"
+  }
+};
+
 export default async function KampanyalarPage() {
   const kampanyalar = (await getKampanyalar()).slice().reverse();
   return (
@@ -31,21 +53,28 @@ export default async function KampanyalarPage() {
             { name: 'Kampanyalar' }
           ]} />
           <div className="row">
-            {kampanyalar.map((kampanya) => (
+            {kampanyalar.map((kampanya, index) => (
               <div key={kampanya.slug} className="col-lg-4 col-md-6 mb-4">
-                <a href={`/kampanyalar/${kampanya.slug}`} className="blog-post" target="_self">
+                <Link href={`/kampanyalar/${kampanya.slug}`} className="blog-post">
                   <div className="blog-post__img">
-                    <img src={kampanya.detailImage} className="img-fluid" alt={kampanya.title} />
+                    <Image 
+                      src={kampanya.detailImage} 
+                      className="img-fluid" 
+                      alt={kampanya.title} 
+                      width={337} 
+                      height={282}
+                      priority={index < 3} // İlk 3 görsel için priority true
+                      loading={index < 3 ? undefined : "lazy"} // Diğerleri için lazy loading
+                    />
                   </div>
                   <div className="blog-post__content">
                     <h4 className="blog-post__title">{kampanya.title}</h4>
                     <p className="blog-post__summary">Detaylı bilgi ve kampanya şartları için tıklayın.</p>
                     <span className="blog-post__link">Devamını Oku <span className="icon-arrow-right"></span></span>
                   </div>
-                </a>
+                </Link>
               </div>
             ))}
-            
           </div>
         </div>
       </section>

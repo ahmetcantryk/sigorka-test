@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-
+import React, { useState, useRef } from 'react';
+import Link from 'next/link';
 const FAQ = () => {
   const [activeItem, setActiveItem] = useState<number | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -85,12 +85,13 @@ const FAQ = () => {
         <div className="faq-list mb-5">
           {faqItems.map((item, idx) => (
             <div key={item.id} className={`faq-list__item${activeItem === item.id ? ' faq-list__item--active' : ''}`}>
-              <a 
+              <Link 
+                href="#"
                 className={`faq-list__item-link${activeItem === item.id ? ' active' : ''}`} 
                 onClick={() => toggleItem(item.id)}
               >
                 <h4 className="faq-list__item-title">{item.title}</h4>
-              </a>
+              </Link>
               <div
                 ref={el => { itemRefs.current[idx] = el; }}
                 className={`faq-list__item-body${activeItem === item.id ? ' faq-list__item-body--open' : ''}`}
@@ -107,9 +108,9 @@ const FAQ = () => {
           ))}
         </div>
         <div className="d-flex justify-content-center">
-          <a href="/sikca-sorulan-sorular" className="btn btn-secondary" target="_self">
+          <Link href="/sikca-sorulan-sorular" className="btn btn-secondary" target="_self">
             Tümünü Gör
-          </a>
+          </Link>
         </div>
       </div>
     </section>

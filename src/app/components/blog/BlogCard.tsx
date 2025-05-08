@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface BlogCardProps {
   blog: {
@@ -16,7 +17,14 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
     <div className="col-lg-4 col-md-6">
       <a href={`/blog/${blog.slug}`} target="_self" className="blog-post">
         <div className="blog-post__img">
-          <img src={blog.imageUrl} alt={blog.title} className="img-fluid" />
+          <Image 
+            src={blog.imageUrl}
+            alt={blog.title}
+            width={400}
+            height={250}
+            className="img-fluid"
+            style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
+          />
         </div>
         <div className="blog-post__content">
           <h3 className="blog-post__title">{blog.title}</h3>

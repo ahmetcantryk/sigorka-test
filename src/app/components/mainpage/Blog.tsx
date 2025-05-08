@@ -1,5 +1,8 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { slugify } from '../blog/slugify';
 
 // Blog tipi
 interface Blog {
@@ -7,6 +10,7 @@ interface Blog {
   imageUrl: string;
   title: string;
   summary: string;
+  slug?: string;
 }
 
 const Blog = () => {
@@ -18,7 +22,12 @@ const Blog = () => {
       .then((data: Blog[]) => {
         // Son eklenen 12 blogu al (id'ye göre tersten sırala)
         const sorted = data.sort((a: Blog, b: Blog) => b.id - a.id);
-        setBlogs(sorted.slice(0, 12));
+        // Her blog için slug oluştur
+        const blogsWithSlugs = sorted.slice(0, 12).map(blog => ({
+          ...blog,
+          slug: blog.slug || slugify(blog.title)
+        }));
+        setBlogs(blogsWithSlugs);
       });
   }, []);
 
@@ -29,30 +38,54 @@ const Blog = () => {
         <div className="posts__slider posts__slider--top" data-animated="true">
           <div className="posts__slider-inner">
             {blogs.slice(0, 6).map((post) => (
-              <a key={post.id} className="posts__item posts__item--md" href={`/page/blog-post?id=${post.id}`} target="_self">
+              <Link 
+                key={post.id} 
+                className="posts__item posts__item--md" 
+                href={`/blog/${post.slug}`}
+                prefetch={false}
+              >
                 <div className="posts__item-img">
-                  <img src={post.imageUrl} className="img-fluid" alt={post.title} />
+                  <Image 
+                    src={post.imageUrl} 
+                    className="img-fluid" 
+                    alt={post.title} 
+                    width={100} 
+                    height={100}
+                    loading="lazy"
+                  />
                 </div>
                 <div className="posts__item-content">
                   <h4>{post.title}</h4>
                   <p>{post.summary}</p>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
         <div className="posts__slider posts__slider--bottom" data-animated="true">
           <div className="posts__slider-inner">
             {blogs.slice(6, 12).map((post) => (
-              <a key={post.id} className="posts__item posts__item--md" href={`/page/blog-post?id=${post.id}`} target="_self">
+              <Link 
+                key={post.id} 
+                className="posts__item posts__item--md" 
+                href={`/blog/${post.slug}`}
+                prefetch={false}
+              >
                 <div className="posts__item-img">
-                  <img src={post.imageUrl} className="img-fluid" alt={post.title} />
+                  <Image 
+                    src={post.imageUrl} 
+                    className="img-fluid" 
+                    alt={post.title} 
+                    width={100} 
+                    height={100}
+                    loading="lazy"
+                  />
                 </div>
                 <div className="posts__item-content">
                   <h4>{post.title}</h4>
                   <p>{post.summary}</p>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

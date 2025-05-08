@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
 interface ContactFormData {
@@ -16,7 +15,6 @@ export default function ContactSticker() {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const dismissed = sessionStorage.getItem('dismissSticker');
@@ -77,7 +75,7 @@ export default function ContactSticker() {
       } else {
         showToast('error', message || 'Bir hata oluştu.');
       }
-    } catch (error) {
+    } catch {
       showToast('error', 'Bir hata oluştu.');
     } finally {
       setIsLoading(false);

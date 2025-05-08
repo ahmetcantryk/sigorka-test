@@ -4,9 +4,8 @@ import { promises as fs } from 'fs';
 import Banner from '../../components/common/Banner';
 import '../../../styles/subpage.min.css';
 import { notFound } from 'next/navigation';
-import Breadcrumb from '../../components/common/Breadcrumb';
 import { Metadata } from 'next';
-
+import Image from 'next/image';
 type Kampanya = {
   slug: string;
   title: string;
@@ -74,7 +73,7 @@ export default async function KampanyaDetayPage({ params }: { params: { slug: st
           <div className="blog-promo">
             <div className="blog-promo__item text-center">
               <div className="campaign-detail-img">
-                <img src={kampanya.image} className="img-fluid" alt={kampanya.title} />
+                <Image src={kampanya.image} className="img-fluid" alt={kampanya.title} width={800} height={400} />
               </div>
             </div>
             <div className="text-content my-5">

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-
+import Link from 'next/link';
 interface DictionaryItem {
   id: number;
   title: string;
@@ -81,13 +81,13 @@ export default function SozlukSearch({ dictionary }: { dictionary: DictionaryIte
         ) : (
           filteredDictionary.slice(0, displayCount).map((item: DictionaryItem) => (
             <div key={item.id} className="col-lg-4 col-md-6">
-              <a href={`/sozluk/${item.slug}`} className="dictionary-item">
+              <Link href={`/sozluk/${item.slug}`} className="dictionary-item">
                 <h4 className="dictionary-item__title">{item.title}</h4>
                 <p className="dictionary-item__summary">{item.summary}</p>
                 <span className="dictionary-item__link">
                   Devamını Oku <span className="icon-arrow-right"></span>
                 </span>
-              </a>
+              </Link>
             </div>
           ))
         )}

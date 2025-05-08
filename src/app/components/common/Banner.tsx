@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 type BannerProps = {
   title1: string;
@@ -9,18 +10,21 @@ type BannerProps = {
   icon2x?: string;
 };
 
-const Banner: React.FC<BannerProps> = ({ title1, title2, size = 'sm', bgImage, icon, icon2x }) => (
+const Banner: React.FC<BannerProps> = ({ title1, title2, size = 'sm', bgImage, icon }) => (
   <section
     className={`cover cover--${size}`}
     style={bgImage ? { backgroundImage: `url(${bgImage})` } : undefined}
   >
     <div className="container cover__container">
       {icon && (
-        <img
+        <Image
           src={icon}
-          srcSet={icon2x ? `${icon2x} 2x` : undefined}
-          className="cover__icon img-fluid"
           alt={title2 || title1}
+          width={62}
+          height={72}
+          className="cover__icon img-fluid"
+          style={{ objectFit: 'cover'
+           }}
         />
       )}
       <h1 className="cover__title-1">{title1}</h1>

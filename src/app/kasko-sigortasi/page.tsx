@@ -1,6 +1,5 @@
 "use client";
 
-import Banner from '../components/common/Banner';
 import Breadcrumb from '../components/common/Breadcrumb';
 import FaqList from '../components/common/FaqList';
 import faqData from '../sikca-sorulan-sorular/faq.json';
@@ -8,9 +7,19 @@ import '../../styles/subpage.min.css';
 import '../../styles/armorbroker.css';
 import ProductBanner from '../components/common/ProductBanner';
 
+interface FaqQuestion {
+  question: string;
+  answer: string;
+}
+
+interface FaqCategory {
+  title: string;
+  questions: FaqQuestion[];
+}
+
 // faq.json'dan Katılım Kasko Sigortası kategorisini bul
-const kaskoFaqCategory = faqData.find((cat: any) => cat.title === 'Katılım Kasko Sigortası');
-const kaskoFaqs = kaskoFaqCategory ? kaskoFaqCategory.questions.map((q: any) => ({ question: q.question, answer: q.answer })) : [];
+const kaskoFaqCategory = faqData.find((cat: FaqCategory) => cat.title === 'Katılım Kasko Sigortası');
+const kaskoFaqs = kaskoFaqCategory ? kaskoFaqCategory.questions.map((q: FaqQuestion) => ({ question: q.question, answer: q.answer })) : [];
 
 export default function KaskoSigortasiPage() {
   return (
@@ -37,7 +46,7 @@ export default function KaskoSigortasiPage() {
             <h4>Araç Kasko Sigortası Nedir?</h4>
             <p>Zorunlu Trafik Sigortası ile sıkça karıştırılan araç kaskosu, araçlar için farklı teminatları kapsar. Kasko ve trafik sigortası arasındaki en önemli farklardan biri, trafik sigortasının Türkiye Cumhuriyeti kapsamında trafiğe çıkan tüm araçlar için zorunlu olmasına rağmen, araç kasko sigortalarının zorunlu olmayışıdır. Ayrıca zorunlu trafik sigortası yalnızca karşı tarafın zararlarını karşılamaya yönelik iken kasko, kendi aracınızın karşılaşabileceği pek çok tehlikeyi ve kazayı içine alan teminatlara sahip avantajlı bir sigorta poliçesidir.</p>
             <h4>Katılım Kasko Sigortası Nasıl Hesaplanır?</h4>
-            <p>Bir aracın kasko değerini etkileyen pek çok unsur bulunur. Modeli, üretim yılı, araç tipi, hasarı, kilometresi, bu unsurlardan sadece bazıları. Peki, bu kadar faktöre göre araç kasko değeri tam olarak nasıl hesaplanır? Aslında bunun için kalem kalem bir hesaplama yapmak yerine güncel verilerden yardım alınır.<br />Bir sigorta şirketi, araç kasko değerini belirlerken Türkiye Sigortalar Birliği tarafından oluşturulan Kasko Değer Listesi'ni baz alır. Çünkü Kasko Değer Listesi üzerinden farklı marka, model ve üretim yılındaki araçların güncel piyasa değerlerine ulaşılabilir. Her ay güncellenen bu liste sayesinde kasko poliçesi oluşturulurken aracın kasko değeri çıkarılır.</p>
+            <p>Bir aracın kasko değerini etkileyen pek çok unsur bulunur. Modeli, üretim yılı, araç tipi, hasarı, kilometresi, bu unsurlardan sadece bazıları. Peki, bu kadar faktöre göre araç kasko değeri tam olarak nasıl hesaplanır? Aslında bunun için kalem kalem bir hesaplama yapmak yerine güncel verilerden yardım alınır.<br />Bir sigorta şirketi, araç kasko değerini belirlerken Türkiye Sigortalar Birliği tarafından oluşturulan Kasko Değer Listesi&apos;ni baz alır. Çünkü Kasko Değer Listesi üzerinden farklı marka, model ve üretim yılındaki araçların güncel piyasa değerlerine ulaşılabilir. Her ay güncellenen bu liste sayesinde kasko poliçesi oluşturulurken aracın kasko değeri çıkarılır.</p>
             <h4>Kasko Poliçesinde Fiyatı Etkileyen Unsurlar</h4>
             <ul className="prop-list">
               <li>Sürücünün Yaşı</li>

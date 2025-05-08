@@ -3,7 +3,22 @@ import { useState, useMemo } from 'react';
 import BlogNav from './BlogNav';
 import BlogList from './BlogList';
 
-export default function BlogClientArea({ blogs, categories }: { blogs: any[], categories: any[] }) {
+interface Category {
+  id: number;
+  name: string;
+}
+
+interface Blog {
+  id?: number;
+  title: string;
+  date: string;
+  slug?: string;
+  imageUrl?: string;
+  htmlContent?: string;
+  categories?: Category[];
+}
+
+export default function BlogClientArea({ blogs, categories }: { blogs: Blog[], categories: Category[] }) {
   const [selectedCategoryId, setSelectedCategoryId] = useState(1);
   const currentCategory = useMemo(() => categories.find(c => c.id === selectedCategoryId), [categories, selectedCategoryId]);
   const h3Title = currentCategory && currentCategory.id !== 1 ? `${currentCategory.name} Yazıları` : 'Tüm Yazılar';

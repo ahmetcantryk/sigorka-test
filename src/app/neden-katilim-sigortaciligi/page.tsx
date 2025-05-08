@@ -36,7 +36,7 @@ export default function NedenKatilimSigortaciligiPage() {
           ]} />
           <div className="text-content">
             <h3>Katılım sigortacılığında yardımlaşma ve dayanışma esası ağır basar. Sigortalıların sahibi bulundukları fonun faizsiz yollarla işletmesi ile sigorta hizmeti gerçekleşirken, taraflar arasında daha adil ve güvene dayalı bir sözleşme yapılmış olur.</h3>
-            <p>Sigorta sektörü gün geçtikçe mali yapı, bilgi teknolojileri ve ürün çeşitliliği bakımından gelişmektedir. Faizsiz yurt dışı reasürans şirketlerinin artması ve 2016 yılından itibaren Kamu'nun yeni katılım bankaları kurması ile birlikte katılım sigortacılığı yıllara göre artan oranda büyümüştür.</p>
+            <p>Sigorta sektörü gün geçtikçe mali yapı, bilgi teknolojileri ve ürün çeşitliliği bakımından gelişmektedir. Faizsiz yurt dışı reasürans şirketlerinin artması ve 2016 yılından itibaren Kamu&apos;nun yeni katılım bankaları kurması ile birlikte katılım sigortacılığı yıllara göre artan oranda büyümüştür.</p>
             <h4>Sigorta Nedir?</h4>
             <p>Sigorta, insanların sahip oldukları varlıklar ile sağlıklarının ve hayatlarının maruz kaldığı tehditlere engel olunamadığı durumlarda, prim mukabilinde onlara ya da onların belirledikleri kimselere yardım edilmesini sağlayan sözleşmelerdir. Böylece zarar gören tarafın zararı hafifletilmiş olur.</p>
             <h4>Katılım Sigortacılığı nedir?</h4>

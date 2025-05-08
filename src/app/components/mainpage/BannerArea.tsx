@@ -1,14 +1,20 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import Script from 'next/script';
+import {  useRef, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/pagination';
 import '../styles/banner-area.css';
 
 const bannerData = [
   {
     id: 1,
     title: "Katılım Sigortalarının En Avantajlı Ürünleri Bir Tık Uzağında",
-    description: "Hemen Sigorka.com'a tıklayarak ihtiyacın olan tüm Katılım Sigorta ürünlerine bir tık ile ulaşmak artık mümkün.",
+    description: "Hemen Sigorka.com&apos;a tıklayarak ihtiyacın olan tüm Katılım Sigorta ürünlerine bir tık ile ulaşmak artık mümkün.",
     link: "/aracim",
     buttonText: "Hemen Teklif Al",
     image: "/images/banner-area-phone.png",
@@ -26,7 +32,7 @@ const bannerData = [
   {
     id: 3,
     title: "Sigorka.com Canlı Destek Hattımıza Bağlan, Tekliflerini Anında Gönderelim.",
-    description: "Sigorka.com'da görüntülediğin tekliflerden sana en uygun olanına karar mı veremedin? Hemen platformun içinden canlı olarak Sigorka.com danışmanımıza bağlan. Anında yazışarak ihtiyaçlarını birlikte belirleyelim. İhtiyaçlarına en uygun ve avantajlı \"kişiye özel poliçe tekliflerini\" anında gönderelim.",
+    description: "Sigorka.com&apos;da görüntülediğin tekliflerden sana en uygun olanına karar mı veremedin? Hemen platformun içinden canlı olarak Sigorka.com danışmanımıza bağlan. Anında yazışarak ihtiyaçlarını birlikte belirleyelim. İhtiyaçlarına en uygun ve avantajlı &quot;kişiye özel poliçe tekliflerini&quot; anında gönderelim.",
     link: "/yuvam",
     buttonText: "Hemen Teklif Al",
     image: "/images/banner-area-phone.png",
@@ -35,100 +41,83 @@ const bannerData = [
 ];
 
 const BannerArea = () => {
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const customDotsRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef<SwiperType | null>(null);
 
-  useEffect(() => {
-    const initCarousel = async () => {
-      if (typeof window !== "undefined" && sliderRef.current) {
-        try {
-          const jQuery = (await import("jquery")).default;
-          window.$ = window.jQuery = jQuery;
-          require("owl.carousel");
-
-          const $slider = jQuery(sliderRef.current);
-          
-          // Özel dots oluştur
-          const dotsHtml = bannerData.map((_, index) => 
-            `<button role="button" class="owl-dot">${index + 1}</button>`
-          ).join('');
-          jQuery('#customDots').html(dotsHtml);
-          
-          $slider.owlCarousel({
-            loop: true,
-            margin: 0,
-            nav: false,
-            dots: true,
-            dotsContainer: '#customDots',
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplayHoverPause: true,
-            responsive: {
-              0: {
-                items: 1
-              }
-            }
-          });
-
-          // Aktif dot'u güncelle
-          $slider.on('changed.owl.carousel', function(event) {
-            const currentItem = event.item.index - event.relatedTarget._clones.length / 2;
-            const actualIndex = (currentItem + bannerData.length) % bannerData.length;
-            jQuery('#customDots .owl-dot').removeClass('active');
-            jQuery('#customDots .owl-dot').eq(actualIndex).addClass('active');
-          });
-
-          // İlk dot'u aktif yap
-          jQuery('#customDots .owl-dot').first().addClass('active');
-        } catch (error) {
-          console.error("Carousel yüklenirken hata oluştu:", error);
-        }
-      }
-    };
-
-    initCarousel();
-  }, []);
+  const handleDotClick = (index: number) => {
+    if (swiperRef.current) {
+      swiperRef.current.slideToLoop(index);
+      setActiveIndex(index);
+    }
+  };
 
   return (
-    <>
-    
-
-      <section className="banner-area">
-        <div className="banner-area__container container">
-          <h3 className="section-title">
-            <span>Üç Kolay Adımda "Güvenli Geleceğe Katılım"</span>
-          </h3>
-          <div ref={sliderRef} className="banner-area__slider owl-carousel owl-theme">
-            {bannerData.map((banner) => (
-              <div key={banner.id} className="banner-area__item">
+    <section className="banner-area">
+      <div className="banner-area__container container">
+        <h3 className="section-title">
+          <span>Üç Kolay Adımda &quot;Güvenli Geleceğe Katılım&quot;</span>
+        </h3>
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={0}
+          slidesPerView={1}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          className="banner-area__slider"
+          onSwiper={(swiper: SwiperType) => {
+            swiperRef.current = swiper;
+          }}
+          onSlideChange={(swiper: SwiperType) => {
+            setActiveIndex(swiper.realIndex);
+          }}
+        >
+          {bannerData.map((banner) => (
+            <SwiperSlide key={banner.id}>
+              <div className="banner-area__item">
                 <div className="row">
                   <div className="col-xl-6 col-lg-7">
                     <div className="banner-area__item-content">
                       <h3>{banner.title}</h3>
                       <p>{banner.description}</p>
-                      <a href={banner.link} target="_self" className="btn btn-primary">
+                      <Link href={banner.link} className="btn btn-primary">
                         {banner.buttonText}
-                      </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="col-xl-6 col-lg-5">
                     <div className="banner-area__item-img">
-                      <img
+                      <Image
                         src={banner.image}
-                        srcSet={`${banner.image2x} 2x`}
-                        alt="Bir tık uzağında!"
+                        alt={banner.title}
                         className="img-fluid"
+                        width={323}
+                        height={442}
+                        loading="lazy"
                       />
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-          <div id="customDots" ref={customDotsRef} className="owl-dots"></div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className="owl-dots">
+          {bannerData.map((_, index) => (
+            <button
+              key={index}
+              role="button"
+              className={`owl-dot ${index === activeIndex ? 'active' : ''}`}
+              onClick={() => handleDotClick(index)}
+            >
+              {index + 1}
+            </button>
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

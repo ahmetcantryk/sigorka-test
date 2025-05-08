@@ -1,13 +1,17 @@
 import React from 'react';
+import Image from 'next/image';
 
 const CallCenter: React.FC = () => (
   <section className="call-center">
     <div className="call-center__container container">
       <div className="call-center__icon">
-        <img
-          src="/images/icon-call-center.svg"
+        <Image
+          src="/images/call-center.png"
+          alt="Call Center"
+          width={400}
+          height={400}
           className="img-fluid"
-          alt="Müşteri Hizmetleri"
+          style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
         />
       </div>
       <div className="call-center__desc">

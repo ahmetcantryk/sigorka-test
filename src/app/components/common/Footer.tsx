@@ -1,5 +1,5 @@
 'use client';
-
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="container footer__container">
         <div className="row">
           <div className="col-lg-3 footer__left">
-            <img src="/images/sigorka-logo-white-new.svg" alt="Sigorka" className="footer__logo" />
+            <Image src="/images/sigorka-logo-white-new.svg" alt="Sigorka" className="footer__logo" width={230} height={62} />
           </div>
           <div className="col-lg-9 footer__right">
             <div className="row no-gutters">

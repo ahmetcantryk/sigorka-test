@@ -13,7 +13,7 @@ import ClientLayout from './components/common/ClientLayout';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import ContactSticker from '@/components/common/ContactSticker';
+import ContactSticker from './components/common/ContactSticker';
 
 const sourceSans3 = Source_Sans_3({
   subsets: ['latin'],

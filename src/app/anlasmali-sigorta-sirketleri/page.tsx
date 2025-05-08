@@ -5,6 +5,7 @@ import React from 'react';
 import '../../styles/subpage.min.css';
 import path from 'path';
 import { promises as fs } from 'fs';
+import Image from 'next/image';
 
 export const metadata = {
   title: "Anlaşmalı Sigorta Şirketleri | Sigorka Partnerleri",
@@ -57,10 +58,13 @@ export default async function AnlasmaliSigortaSirketleriPage() {
               <div key={sirket.slug} className="col-xl-4 col-lg-5 col-md-6">
                 <div className="partner-box">
                   <a href={sirket.link} target="_self" className="partner-box__img">
-                    <img
+                    <Image
                       src={sirket.logo}
-                      srcSet={sirket.logo2x ? `${sirket.logo2x} 2x` : undefined}
                       alt={sirket.name}
+                      width={200}
+                      height={100}
+                      priority
+                      style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
                     />
                   </a>
                   <div className="partner-box__content">

@@ -2,10 +2,23 @@
 import dynamic from 'next/dynamic';
 import 'owl.carousel/dist/assets/owl.carousel.min.css';
 import 'owl.carousel/dist/assets/owl.theme.default.min.css';
+import Image from 'next/image';
 
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
-export default function BlogPromoSlider({ promoBlogs }) {
+interface Blog {
+  id: number;
+  title: string;
+  summary: string;
+  imageUrl: string;
+  slug?: string;
+}
+
+interface BlogPromoSliderProps {
+  promoBlogs: Blog[];
+}
+
+export default function BlogPromoSlider({ promoBlogs }: BlogPromoSliderProps) {
   if (!promoBlogs?.length) return null;
   return (
     <OwlCarousel
@@ -26,7 +39,14 @@ export default function BlogPromoSlider({ promoBlogs }) {
     >
       {promoBlogs.map((blog) => (
         <div className="blog-promo__item" key={blog.id}>
-          <img src={blog.imageUrl} className="blog-promo__item-img" alt={blog.title} />
+          <Image 
+            src={blog.imageUrl} 
+            className="blog-promo__item-img" 
+            alt={blog.title} 
+            width={800}
+            height={450}
+            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+          />
           <div className="blog-promo__item-content">
             <h3>{blog.title}</h3>
             <p>{blog.summary}</p>

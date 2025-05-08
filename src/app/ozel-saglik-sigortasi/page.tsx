@@ -95,7 +95,7 @@ export default function OzelSaglikSigortasiPage() {
               <li>Teminat kapsamındaki tahliller</li>
             </ul>
             <h4>Özel Sağlık Katılım Sigortasının Yatarak Teminat Kapsamı Nelerdir?</h4>
-            <p>Özel Sağlık Sigortası'nın yatarak tedavi kapsamına girebilen bazı tedaviler ve sağlık hizmetleri şunlardır:</p>
+            <p>Özel Sağlık Sigortası&apos;nın yatarak tedavi kapsamına girebilen bazı tedaviler ve sağlık hizmetleri şunlardır:</p>
             <ul className="prop-list">
               <li>Radyoterapi</li>
               <li>Diyaliz</li>
@@ -109,9 +109,9 @@ export default function OzelSaglikSigortasiPage() {
               <li>Yoğun bakım harcamaları</li>
               <li>Laboratuvar testleri</li>
             </ul>
-            <p>Yatarak tedavi teminatı konusunda dikkat edilmesi gereken konulardan biri hastalıklardır. ÖSS poliçesini düzenlerken planlı bir ameliyat veya tedavi teminat altına alınamaz. Bu nedenle ilk kez yaptırılacak Özel Sağlık Sigortası'nın bazı hastalıklar için 3 ay bekleme süresi bulunur. Yani ilk 3 ay bazı hastalıkların tedavileri sigorta kapsamı dışında kalır. Ancak bu süre sonunda söz konusu sağlık sorunu için tedaviler karşılanır.</p>
+            <p>Yatarak tedavi teminatı konusunda dikkat edilmesi gereken konulardan biri hastalıklardır. ÖSS poliçesini düzenlerken planlı bir ameliyat veya tedavi teminat altına alınamaz. Bu nedenle ilk kez yaptırılacak Özel Sağlık Sigortası&apos;nın bazı hastalıklar için 3 ay bekleme süresi bulunur. Yani ilk 3 ay bazı hastalıkların tedavileri sigorta kapsamı dışında kalır. Ancak bu süre sonunda söz konusu sağlık sorunu için tedaviler karşılanır.</p>
             <h4>Özel Sağlık Katılım Sigortası Nasıl Yaptırılır?</h4>
-            <p>Özel Sağlık Katılım Sigortası'nı en avantajlı ve güvenilir bir şekilde yaptırabilmek için Sigorka.com üzerinden uzman sigorta danışmanları ile iletişime geçerek kendinize en uygun Özel Sağlık Katılım Sigortası ürününü seçebilirsiniz. Böylelikle bütçenize ve özel sağlık ihtiyaçlarınıza göre sigorta ürünü belirlemeniz kolaylaşır. Aldığınız teklifler içerisinde kendinize en uygun olanı satın alabilmek için Özel Sağlık Sigortası başvuru formunu doldurabilirsiniz. Dilerseniz özel sağlık sigortası yaptırdıktan sonra sigorta şirketinizi değiştirebilirsiniz. Türkiye'de bulunan yabancılar da oturma izinleri varsa ÖSS yaptırabilir. Oturma izinleri yoksa yabancılar için özel olan sağlık sigortasına başvurmaları gerekir.</p>
+            <p>Özel Sağlık Katılım Sigortası&apos;nı en avantajlı ve güvenilir bir şekilde yaptırabilmek için Sigorka.com üzerinden uzman sigorta danışmanları ile iletişime geçerek kendinize en uygun Özel Sağlık Katılım Sigortası ürününü seçebilirsiniz. Böylelikle bütçenize ve özel sağlık ihtiyaçlarınıza göre sigorta ürünü belirlemeniz kolaylaşır. Aldığınız teklifler içerisinde kendinize en uygun olanı satın alabilmek için Özel Sağlık Sigortası başvuru formunu doldurabilirsiniz. Dilerseniz özel sağlık sigortası yaptırdıktan sonra sigorta şirketinizi değiştirebilirsiniz. Türkiye&apos;de bulunan yabancılar da oturma izinleri varsa ÖSS yaptırabilir. Oturma izinleri yoksa yabancılar için özel olan sağlık sigortasına başvurmaları gerekir.</p>
           </div>
           <div className="col-12 my-5">
             <div className="offer-banner offer-banner-health-bg">

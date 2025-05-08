@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Image from 'next/image';
 interface ProductBoxProps {
   title: string;
   img: string;
@@ -10,7 +10,7 @@ interface ProductBoxProps {
 const ProductBox: React.FC<ProductBoxProps> = ({ title, img, alt, link }) => (
   <a href={link} className="product-box">
     <div className="product-box__img">
-      <img src={img} className="img-fluid" alt={alt} />
+      <Image src={img} className="img-fluid" alt={alt} width={48} height={45} />
     </div>
     <h4 className="product-box__title" dangerouslySetInnerHTML={{ __html: title }} />
     <span className="product-box__link">

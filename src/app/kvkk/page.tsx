@@ -56,7 +56,7 @@ export default function KisiselVerilerinKorunmasiPage() {
                 <p><span>-</span><span> Mü</span><span>nhasıran otomatik sistemler ile analiz edilmesi nedeniyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme,</span></p>
                 <p><span>-</span><span> Kanuna aykırı olarak işlenmesi sebebiyle zarara uğramanız hâlinde zararın giderilmesini talep etme haklarına sahip olduğunuzu bildirir, sizlere sunduğumuz tüm ürün ve hizmetlerimizde kişisel veri güvenliğinin </span><span>ön planda olduğu bilinciyle faaliyetlerimize devam ettiğimizi bilgilerinize sunarız.</span></p>
                 <p><span>Kişisel Veri Sahibi Başvuru Usulü</span></p>
-                <p><span>Yukarıda belirtilen haklarınıza ilişkin taleplerinizi iletmek için bu aydınlatma metninin </span><span>en alt kısmında yer alan linkte bulunan Başvuru Formu'nu kullanabilirsiniz.</span></p>
+                <p><span>Yukarıda belirtilen haklarınıza ilişkin taleplerinizi iletmek için bu aydınlatma metninin </span><span>en alt kısmında yer alan linkte bulunan Başvuru Formu&apos;nu kullanabilirsiniz.</span></p>
                 <p><span>Taleplerinize ilişkin başvurularınızı;</span></p>
                 <p><span>-</span><span> Elden</span></p>
                 <p><span>-</span><span> İadeli taahhütlü mektupla</span></p>

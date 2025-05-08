@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 // import { FaShieldAlt, FaClock, FaHandshake, FaUserFriends } from 'react-icons/fa';
 
 const WhyUs = () => {
@@ -12,7 +13,7 @@ const WhyUs = () => {
           <div className="col-md-3 col-6 mb-3">
             <div className="why-us__item h-100">
               <div className="why-us__item-img">
-                <img src="/images/why-us/etik.svg" className="img-fluid" alt="Etiğiz" />
+                <Image src="/images/why-us/etik.svg" className="img-fluid" alt="Etiğiz" width={149} height={120} />
               </div>
               <h4 className="why-us__item-title">Etiğiz</h4>
               <p className="why-us__item-desc">
@@ -24,7 +25,7 @@ const WhyUs = () => {
           <div className="col-md-3 col-6 mb-3">
             <div className="why-us__item h-100">
               <div className="why-us__item-img">
-                <img src="/images/why-us/seffaf.svg" className="img-fluid" alt="Şeffafız" />
+                <Image src="/images/why-us/seffaf.svg" className="img-fluid" alt="Şeffafız" width={120} height={120} />
               </div>
               <h4 className="why-us__item-title">Şeffafız</h4>
               <p className="why-us__item-desc">
@@ -36,7 +37,7 @@ const WhyUs = () => {
           <div className="col-md-3 col-6 mb-3">
             <div className="why-us__item h-100">
               <div className="why-us__item-img">
-                <img src="/images/why-us/sorumlu.svg" className="img-fluid" alt="Size Karşı Sorumluyuz" />
+                <Image src="/images/why-us/sorumlu.svg" className="img-fluid" alt="Size Karşı Sorumluyuz" width={119} height={120} />
               </div>
               <h4 className="why-us__item-title">Size Karşı Sorumluyuz</h4>
               <p className="why-us__item-desc">
@@ -48,7 +49,7 @@ const WhyUs = () => {
           <div className="col-md-3 col-6 mb-3">
             <div className="why-us__item h-100">
               <div className="why-us__item-img">
-                <img src="/images/why-us/profesyonel.svg" className="img-fluid" alt="Profesyonel ve Bilgiliyiz" />
+                <Image src="/images/why-us/profesyonel.svg" className="img-fluid" alt="Profesyonel ve Bilgiliyiz" width={86} height={120} />
               </div>
               <h4 className="why-us__item-title">Profesyonel ve Bilgiliyiz</h4>
               <p className="why-us__item-desc">

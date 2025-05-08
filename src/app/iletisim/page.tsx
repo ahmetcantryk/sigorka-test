@@ -19,12 +19,12 @@ export const metadata = {
 
 import Banner from '../components/common/Banner';
 import Breadcrumb from '../components/common/Breadcrumb';
-import React, { useState } from 'react';
+import React from 'react';
 import '../../styles/subpage.min.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NewsletterForm from './NewsletterForm';
-
+import Image from 'next/image';
 export default function IletisimPage() {
   return (
     <>
@@ -39,14 +39,14 @@ export default function IletisimPage() {
           <div className="row flex-row justify-content-center">
             <div className="col-lg-5 col-md-6">
               <div className="contact-item">
-                <img src="/images/icon-location.svg" className="contact-item__icon" alt="Adres" />
+                <Image src="/images/icon-location.svg" className="contact-item__icon" alt="Adres" width={40} height={40} />
                 <h3 className="contact-item__title">Sigorka.com Merkez Ofisi</h3>
                 <p className="contact-item__desc">Sahrayıcedid Mah. Batman Sok. No:30/42 GFY Plaza<br /> Kadıköy | İstanbul</p>
               </div>
             </div>
             <div className="col-lg-5 col-md-6">
               <div className="contact-item">
-                <img src="/images/icon-call-center.svg" className="contact-item__icon" alt="Müşteri Hizmetleri Merkezi" />
+                <Image src="/images/icon-call-center.svg" className="contact-item__icon" alt="Müşteri Hizmetleri Merkezi" width={40} height={40} />
                 <h3 className="contact-item__title">Müşteri Hizmetleri Merkezi</h3>
                 <p className="contact-item__desc">0 850 404 04 04</p>
               </div>

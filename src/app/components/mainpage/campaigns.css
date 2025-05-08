@@ -1,0 +1,137 @@
+.campaigns {
+  padding: 60px 0;
+}
+
+.campaigns__container {
+  position: relative;
+}
+
+.campaigns__slider-wrapper {
+  position: relative;
+  /* padding: 0 40px; */
+}
+
+.campaigns__slider {
+  overflow: hidden;
+}
+
+.campaigns__item {
+  background: #fff;
+  border-radius: 8px;
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+  padding: 20px;
+  margin: 10px 0;
+}
+
+.campaigns__item-img {
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.campaigns__item-content {
+  padding: 20px;
+}
+
+.campaigns__item-content h4 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.campaigns__item-content p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.campaigns__item-content a {
+  color: #007bff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.campaigns__item-content a:hover {
+  color: #0056b3;
+}
+
+.campaigns__item-content .icon-arrow-right {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.campaigns__item-content a:hover .icon-arrow-right {
+  transform: translateX(5px);
+}
+
+/* Navigation Buttons */
+.campaigns__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  outline: none;
+ 
+}
+
+.campaigns__nav:focus{
+  outline: none;
+}
+
+.campaigns__nav:hover {
+  /* background: #f5f5f5; */
+}
+
+.campaigns__nav-prev {
+  left: 100px;
+}
+
+.campaigns__nav-next {
+  right: 100px;
+}
+
+.campaigns__nav .icon-angle-left,
+.campaigns__nav .icon-angle-right {
+    font-size: 18px;
+    color: #291f69;
+}
+
+/* Swiper Navigation Buttons */
+.swiper-button-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .campaigns__nav{bottom:0 !important;top:inherit !important;}
+    .campaigns__item-img img{width: 100% !important;height: auto !important;}
+    .campaigns__nav-next{right: 0 !important;}
+    .campaigns__nav-prev{right: 50px !important;left: inherit !important;}
+  .campaigns__slider-wrapper {
+    /* padding: 0 30px; */
+  }
+
+  .campaigns__item {
+    padding: 15px;
+  }
+
+  .campaigns__item-content {
+    padding: 15px;
+  }
+
+  .campaigns__item-content h4 {
+    font-size: 18px;
+  }
+} 

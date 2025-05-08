@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /_next/
+Disallow: /*?*
+Disallow: /*&*
+
+Disallow: /*.js
+Disallow: /*.css
+Disallow: /*.png
+Disallow: /*.jpg
+Disallow: /*.jpeg
+Disallow: /*.gif
+Disallow: /*.svg
+
+Sitemap: https://sigorka.com/sitemap.xml

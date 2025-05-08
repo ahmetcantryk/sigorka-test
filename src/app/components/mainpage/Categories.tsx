@@ -1,15 +1,18 @@
+import Image from 'next/image';
+import Link from 'next/link';
 const Categories = () => {
   return (
     <section className="categories">
       <div className="categories__container container">
         <div className="row">
           <div className="col-md-4">
-            <a href="/aracim" className="categories__item" target="_self">
-              <img 
+            <Link href="/aracim" className="categories__item" target="_self">
+              <Image 
                 className="categories__item-img img-fluid" 
                 src="/images/aracim.png"
-                srcSet="/images/aracim@2x.png 2x" 
                 alt="Aracım" 
+                width={122}
+                height={140}
               />
               <div className="categories__item-content">
                 <h3 className="categories__item-title">Aracım</h3>
@@ -20,15 +23,16 @@ const Categories = () => {
               <span className="categories__item-link">
                 <span className="icon-arrow-right"></span>
               </span>
-            </a>
+            </Link>
           </div>
           <div className="col-md-4">
-            <a href="/sagligim" className="categories__item" target="_self">
-              <img 
+            <Link href="/sagligim" className="categories__item" target="_self">
+              <Image 
                 className="categories__item-img img-fluid" 
                 src="/images/sagligim.png"
-                srcSet="/images/sagligim@2x.png 2x" 
                 alt="Sağlığım" 
+                width={122}
+                height={140}
               />
               <div className="categories__item-content">
                 <h3 className="categories__item-title">Sağlığım</h3>
@@ -39,15 +43,16 @@ const Categories = () => {
               <span className="categories__item-link">
                 <span className="icon-arrow-right"></span>
               </span>
-            </a>
+            </Link>
           </div>
           <div className="col-md-4">
-            <a href="/yuvam" target="_self" className="categories__item">
-              <img 
+            <Link href="/yuvam" target="_self" className="categories__item">
+              <Image 
                 className="categories__item-img img-fluid" 
                 src="/images/yuvam.png"
-                srcSet="/images/yuvam@2x.png 2x" 
                 alt="Yuvam" 
+                width={122}
+                height={140}
               />
               <div className="categories__item-content">
                 <h3 className="categories__item-title">Yuvam</h3>
@@ -58,7 +63,7 @@ const Categories = () => {
               <span className="categories__item-link">
                 <span className="icon-arrow-right"></span>
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

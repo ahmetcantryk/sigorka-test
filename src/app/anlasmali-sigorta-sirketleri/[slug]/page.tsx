@@ -3,10 +3,11 @@ import path from 'path';
 import { promises as fs } from 'fs';
 import Banner from '../../components/common/Banner';
 import Breadcrumb from '../../components/common/Breadcrumb';
-import CallCenter from '../../components/common/CallCenter';
+import '../../../styles/main.min.css';
 import '../../../styles/subpage.min.css';
+import '../../../styles/armorbroker.css';
 import React from 'react';
-import { Metadata } from 'next';
+import type { Metadata, ResolvingMetadata } from 'next';
 
 type TableType = { title: string; rows: [string, string][] };
 type Sirket = {
@@ -20,6 +21,11 @@ type Sirket = {
   actions?: { label: string; href: string }[];
 };
 
+type Props = {
+  params: Promise<{ slug: string }>;
+  // searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
 async function getSirket(slug: string): Promise<Sirket | undefined> {
   const filePath = path.join(process.cwd(), 'src/app/anlasmali-sigorta-sirketleri/sirketler.json');
   const data = await fs.readFile(filePath, 'utf8');
@@ -27,8 +33,17 @@ async function getSirket(slug: string): Promise<Sirket | undefined> {
   return sirketler.find((s) => s.slug === slug);
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const sirket = await getSirket(params.slug);
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // Params'ı çözümle
+  const { slug } = await params;
+  const sirket = await getSirket(slug);
+
+  // Parent metadata'yı al
+  const previousImages = (await parent).openGraph?.images || [];
+
   if (!sirket) {
     return {
       title: "Sigorta Şirketi Bulunamadı | Sigorka",
@@ -36,7 +51,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
   }
 
-  // Şirket bazlı özel meta bilgileri
   const metaInfo = {
     'turkiye-katilim-sigorta': {
       title: "Türkiye Katılım Sigorta - Ürün ve Hizmetler | Sigorka",
@@ -76,7 +90,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         {
           url: sirket.logo,
           alt: sirket.name
-        }
+        },
+        ...previousImages
       ]
     },
     twitter: {
@@ -84,12 +99,23 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       description: meta.description,
       card: "summary_large_image",
       images: [sirket.logo]
+    },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     }
   };
 }
 
-export default async function AnlasmaliSirketDetayPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function Page({ params }: Props) {
+  const { slug } = await params;
   const sirket = await getSirket(slug);
   if (!sirket) notFound();
 
@@ -109,7 +135,6 @@ export default async function AnlasmaliSirketDetayPage({ params }: { params: { s
           <div className="text-content">
             <div className="d-flex justify-content-between align-items-center mb-4">
               <h3 className="mb-0">{sirket.name}</h3>
-           
             </div>
             <div dangerouslySetInnerHTML={{ __html: sirket.detail }} />
             {sirket.actions && (
@@ -150,7 +175,6 @@ export default async function AnlasmaliSirketDetayPage({ params }: { params: { s
           </div>
         </div>
       </section>
-      <CallCenter />
     </>
   );
-} 
+}

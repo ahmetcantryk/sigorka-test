@@ -106,7 +106,7 @@ export default function Promo() {
         <div className="promo__scene-1" ref={sceneRef}>
           <div className="promo__title">
             <h1>
-              Türkiye'nin İlk ve Tek
+              Türkiye&apos;nin İlk ve Tek
               <span>Katılım Sigorta Pazar Yerine</span>
               Hoş Geldiniz!
 

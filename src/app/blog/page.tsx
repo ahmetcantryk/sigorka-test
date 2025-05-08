@@ -4,6 +4,21 @@ import '../../styles/main.min.css';
 import '../../styles/subpage.min.css';
 import '../../styles/armorbroker.css';
 
+
+interface Category {
+  id: number;
+  name: string;
+}
+
+interface Blog {
+  title: string;
+  date: string;
+  slug?: string;
+  content?: string;
+  image?: string;
+  categories?: Category[];
+}
+
 export const metadata = {
   title: "Sigorta Blogu - Güncel Haberler ve İpuçları | Sigorka",
   description: "Sigortacılıkla ilgili güncel yazılar, ipuçları ve rehberler için blog sayfamızı ziyaret edin. Daha fazlası için sitemizi ziyaret ederek hizmetlere göz atın.",
@@ -26,9 +41,9 @@ export const metadata = {
 export default async function BlogPage() {
   // Blogları serverda fetch et
   const res = await fetch('http://localhost:3000/content/blogs.json', { cache: 'no-store' });
-  const blogs = await res.json();
+  const blogs = await res.json() as Blog[];
   // Tarihe göre sıralayıp en güncel 3 blogu promoBlogs olarak seç
-  const sorted = blogs.slice().sort((a: any, b: any) => {
+  const sorted = blogs.slice().sort((a: Blog, b: Blog) => {
     const aylar = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
     const parseDate = (str: string) => {
       const [gun, ay, yil] = str.split(' ');
@@ -41,9 +56,9 @@ export default async function BlogPage() {
   const promoBlogs = sorted.slice(0, 3);
   // Kategorileri çıkar
   const categories = [{ id: 1, name: 'Tüm Yazılar' }];
-  blogs.forEach((blog: any) => {
+  blogs.forEach((blog: Blog) => {
     if (blog.categories) {
-      blog.categories.forEach((cat: any) => {
+      blog.categories.forEach((cat: Category) => {
         if (cat && cat.id && !categories.find(c => c.id === cat.id)) {
           categories.push({ id: cat.id, name: cat.name });
         }

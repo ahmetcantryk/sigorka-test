@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 // import OverlayLoader from './OverlayLoader';
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
@@ -42,10 +43,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         style={{ display: showBackToTop ? 'block' : 'none' }}
         onClick={handleBackToTop}
       >
-        <img
+        <Image
           src="/images/arrow.svg"
           alt="Başa kaydırın"
-          style={{ width: 28, height: 28 }}
+          width={28}
+          height={28}
+          className="img-fluid"
+          style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
         />
       </div>
     </>

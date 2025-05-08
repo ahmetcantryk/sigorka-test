@@ -3,6 +3,7 @@ import Breadcrumb from '../components/common/Breadcrumb';
 import CallCenter from '../components/common/CallCenter';
 import React from 'react';
 import '../../styles/subpage.min.css';
+import Image from 'next/image';
 
 export const metadata = {
   title: "Sigorka Hakkında - Kimiz, Ne Yapıyoruz? | Sigorka",
@@ -37,8 +38,8 @@ export default function BizKimizPage() {
           <div className="text-content">
             <h3>Güvenli geleceğe katılım.</h3>
             <h4>
-              Türkiye'nin ilk ve tek online katılım sigortası platformu
-              Sigorka.com'a hoş geldiniz.
+              Türkiye&apos;nin ilk ve tek online katılım sigortası platformu
+              Sigorka.com&apos;a hoş geldiniz.
             </h4>
 
             <p>
@@ -65,7 +66,7 @@ export default function BizKimizPage() {
             <h4>
               Sektörün önde gelen katılım sigorta kuruluşlarının ürünlerini kendi
               çatısı altında sunan<br />
-              Sigorka.com'un temelleri 2023 yılında atılmıştır.
+              Sigorka.com&apos;un temelleri 2023 yılında atılmıştır.
             </h4>
             <p>
               Bir ARMOR KATILIM SİGORTA VE REASÜRANS BROKERLİĞİ A.Ş. markası olan
@@ -79,41 +80,61 @@ export default function BizKimizPage() {
             <div className="row custom-gutters flex-row mb-4">
               <div className="col-md-3 col-xl-2 col-6 mb-3">
                 <a href="#" className="partners__item">
-                  <img
+                  <Image
                     src="/images/partners/bereket-sigorta.png"
-                    srcSet="/images/partners/bereket-sigorta@2x.png 2x"
+                    width={114}
+                    height={29}
                     className="partners__item-img"
                     alt="Bereket Sigorta"
+                    // style={{ width: '100%', height: 'auto' }}
                   />
                 </a>
               </div>
               <div className="col-md-3 col-xl-2 col-6 mb-3">
                 <a href="#" className="partners__item">
-                  <img
+                  <Image
                     src="/images/partners/hdi-katilim.png"
-                    srcSet="/images/partners/hdi-katilim@2x.png 2x"
+                    width={77}
+                    height={77}
                     className="partners__item-img"
                     alt="HDI Katılım Sigorta"
+                    // style={{ width: '100%', height: 'auto' }}
                   />
                 </a>
               </div>
               <div className="col-md-3 col-xl-2 col-6 mb-3">
                 <a href="#" className="partners__item">
-                  <img
+                  <Image
                     src="/images/partners/katilim-emeklilik.png"
-                    srcSet="/images/partners/katilim-emeklilik@2x.png 2x"
+                    width={180}
+                    height={80}
                     className="partners__item-img"
                     alt="Katılım Emeklilik"
+                    style={{ width: '100%', height: 'auto' }}
                   />
                 </a>
               </div>
               <div className="col-md-3 col-xl-2 col-6 mb-3">
                 <a href="#" className="partners__item">
-                  <img
+                  <Image
+                    src="/images/partners/neova.png"
+                    width={154}
+                    height={51}
+                    className="partners__item-img"
+                    alt="Neova Sigorta"
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                </a>
+              </div>
+              <div className="col-md-3 col-xl-2 col-6 mb-3">
+                <a href="#" className="partners__item">
+                  <Image
                     src="/images/partners/turkiye-katilim.png"
-                    srcSet="/images/partners/turkiye-katilim@2x.png 2x"
+                    width={180}
+                    height={80}
                     className="partners__item-img"
                     alt="Türkiye Katılım Sigorta"
+                    style={{ width: '100%', height: 'auto' }}
                   />
                 </a>
               </div>

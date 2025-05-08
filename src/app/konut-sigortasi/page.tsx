@@ -140,7 +140,7 @@ export default function KonutSigortasiPage() {
               <li>Sigorta poliçesine ekleteceğiniz teminatlar sayesinde herhangi bir acil durumda tesisatçı, çilingir, tıbbi destek gibi hizmetlere ücretsiz bir şekilde ulaşabilmenizi sağlar.</li>
               <li>Enflasyondan kaynaklanan değer kayıplarını karşılar.</li>
               <li>Herhangi bir çökme durumunda zararla birlikte enkaz giderlerini de karşılar.</li>
-              <li>DASK sigortasının deprem sonucu meydana gelen zararlarda teminat dışı bıraktığı durumları, konut sigortası karşılar. Bu sayede DASK'ın karşılamadığı limitleri karşılayarak size maddi güvence sunar.</li>
+              <li>DASK sigortasının deprem sonucu meydana gelen zararlarda teminat dışı bıraktığı durumları, konut sigortası karşılar. Bu sayede DASK&apos;ın karşılamadığı limitleri karşılayarak size maddi güvence sunar.</li>
             </ul>
           </div>
           <div className="col-12 mb-4">

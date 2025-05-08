@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface DropdownState {
   [key: number]: boolean;
@@ -11,7 +12,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [activeDropdowns, setActiveDropdowns] = useState<DropdownState>({});
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -21,9 +21,6 @@ export default function Header() {
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
-
-    // Touch device kontrolü
-    setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
 
     // Scroll kontrolü
     const handleScroll = () => {
@@ -89,7 +86,7 @@ export default function Header() {
     <div className={`navbar ${isScrolled ? 'navbar--reverse' : ''}`} id="welcome_header_content">
       <div className="navbar__container container">
         <Link href="/" className="navbar__logo">
-          <img src="/images/sigorka-logo-new.svg" alt="Sigorka Logo" />
+          <Image src="/images/sigorka-logo-new.svg" alt="Sigorka Logo" width={230} height={50} />
         </Link>
         <div className={`navbar__collapse ${isMenuOpen ? 'show' : ''}`}>
           <div className="navbar__mobile">
@@ -118,7 +115,7 @@ export default function Header() {
                   <div className="col-12 col-lg-4">
                     <Link href="/aracim" className="nav-box">
                       <div className="nav-box__img">
-                        <img src="/images/aracim.png" srcSet="/images/aracim.png, /images/aracim@2x.png 2x" alt="Aracım" />
+                        <Image src="/images/aracim.png" alt="Aracım" width={50} height={57} />
                       </div>
                       <h4 className="nav-box__title">Aracım</h4>
                     </Link>
@@ -137,7 +134,7 @@ export default function Header() {
                   <div className="col-12 col-lg-4">
                     <Link href="/sagligim" className="nav-box">
                       <div className="nav-box__img">
-                        <img src="/images/sagligim.png" srcSet="/images/sagligim.png, /images/sagligim@2x.png 2x" alt="Sağlığım" />
+                        <Image src="/images/sagligim.png" alt="Sağlığım" width={50} height={57} />
                       </div>
                       <h4 className="nav-box__title">Sağlığım</h4>
                     </Link>
@@ -159,7 +156,7 @@ export default function Header() {
                   <div className="col-12 col-lg-4">
                     <Link href="/yuvam" className="nav-box">
                       <div className="nav-box__img">
-                        <img src="/images/yuvam.png" srcSet="/images/yuvam.png, /images/yuvam@2x.png 2x" alt="Yuvam" />
+                        <Image src="/images/yuvam.png" alt="Yuvam" width={50} height={57} />
                       </div>
                       <h4 className="nav-box__title">Yuvam</h4>
                     </Link>
@@ -201,7 +198,7 @@ export default function Header() {
                   <div className="col-12 col-lg-4">
                     <Link href="/aracim" className="nav-box">
                       <div className="nav-box__img">
-                        <img src="/images/aracim.png" srcSet="/images/aracim.png, /images/aracim@2x.png 2x" alt="Aracım" />
+                        <Image src="/images/aracim.png" alt="Aracım" width={50} height={57} />
                       </div>
                       <h4 className="nav-box__title">Aracım</h4>
                     </Link>
@@ -220,7 +217,7 @@ export default function Header() {
                   <div className="col-12 col-lg-4">
                     <Link href="/sagligim" className="nav-box">
                       <div className="nav-box__img">
-                        <img src="/images/sagligim.png" srcSet="/images/sagligim.png, /images/sagligim@2x.png 2x" alt="Sağlığım" />
+                        <Image src="/images/sagligim.png" alt="Sağlığım" width={50} height={57} />
                       </div>
                       <h4 className="nav-box__title">Sağlığım</h4>
                     </Link>
@@ -242,7 +239,7 @@ export default function Header() {
                   <div className="col-12 col-lg-4">
                     <Link href="/yuvam" className="nav-box">
                       <div className="nav-box__img">
-                        <img src="/images/yuvam.png" srcSet="/images/yuvam.png, /images/yuvam@2x.png 2x" alt="Yuvam" />
+                        <Image src="/images/yuvam.png" alt="Yuvam" width={50} height={57} />
                       </div>
                       <h4 className="nav-box__title">Yuvam</h4>
                     </Link>

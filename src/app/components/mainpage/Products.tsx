@@ -1,17 +1,18 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import Script from 'next/script';
-
-declare global {
-  interface Window {
-    $: any;
-    jQuery: any;
-  }
-}
+import { useRef } from 'react';
+import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import Link from 'next/link';
+import './products.css';
 
 const Products = () => {
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
 
   const products = [
     {
@@ -76,70 +77,68 @@ const Products = () => {
     }
   ];
 
-  useEffect(() => {
-    const loadCarousel = async () => {
-      if (typeof window !== "undefined" && sliderRef.current) {
-        try {
-          const jQuery = (await import("jquery")).default;
-          window.$ = window.jQuery = jQuery;
-          require("owl.carousel");
-
-          jQuery(sliderRef.current).owlCarousel({
-            loop: true,
-            margin: 20,
-            nav: true,
-            dots: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplayHoverPause: true,
-            navText: [
-              '<span class="icon-angle-left"></span>',
-              '<span class="icon-angle-right"></span>'
-            ],
-            responsive: {
-              0: {
-                items: 2
-              },
-              576: {
-                items: 2
-              },
-              768: {
-                items: 3
-              },
-              992: {
-                items: 4
-              }
-            }
-          });
-        } catch (error) {
-          console.error("Carousel yüklenirken hata oluştu:", error);
-        }
-      }
-    };
-
-    loadCarousel();
-  }, []);
-
   return (
-    <>
-    
-      <section className="products">
-        <div className="products__container container">
-          <h3 className="section-title"><span>Ürünler</span></h3>
-          <div ref={sliderRef} className="products__slider owl-carousel owl-theme">
-            {products.map((product) => (
-              <a key={product.id} href={product.link} className="products__slider-item" target="_self">
-                <div className="products__slider-img">
-                  <img src={product.image} className="img-fluid" alt={product.title} />
-                </div>
-                <h4>{product.title}</h4>
-                <span className="products__slider-link">Teklif Al <span className="icon-arrow-right"></span></span>
-              </a>
-            ))}
+    <section className="products">
+      <div className="products__container container">
+        <h3 className="section-title"><span>Ürünler</span></h3>
+        <div className="products__slider-wrapper">
+          <div className='products__slider-wrapper-inner'>
+            <Swiper
+              modules={[Autoplay, Navigation, Pagination]}
+              spaceBetween={20}
+              slidesPerView={2}
+              loop={true}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+              }}
+              navigation={{
+                prevEl: '.products__nav-prev',
+                nextEl: '.products__nav-next',
+              }}
+              breakpoints={{
+                0: {
+                  slidesPerView: 2
+                },
+                576: {
+                  slidesPerView: 2
+                },
+                768: {
+                  slidesPerView: 3
+                },
+                992: {
+                  slidesPerView: 4
+                }
+              }}
+              className="products__slider"
+              onSwiper={(swiper: SwiperType) => {
+                swiperRef.current = swiper;
+              }}
+            >
+              {products.map((product) => (
+                <SwiperSlide key={product.id}>
+                  <Link href={product.link} className="products__slider-item" target="_self">
+                    <div className="products__slider-img">
+                      <Image src={product.image} className="img-fluid" alt={product.title} width={80} height={45} />
+                    </div>
+                    <h4>{product.title}</h4>
+                    <span className="products__slider-link">Teklif Al <span className="icon-arrow-right"></span></span>
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
+          <div className="products__dots"></div>
+          <button className="products__nav products__nav-prev">
+            <span className="icon-arrow-long-left"></span>
+          </button>
+          <button className="products__nav products__nav-next">
+            <span className="icon-arrow-long-right"></span>
+          </button>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

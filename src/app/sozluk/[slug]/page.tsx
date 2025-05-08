@@ -5,7 +5,7 @@ import ProposalCta from '../../components/common/ProposalCta';
 import '../../../styles/subpage.min.css';
 import dictionary from '../dictionary.json';
 import { Metadata } from 'next';
-
+import Link from 'next/link';
 interface DictionaryItem {
   id: number;
   title: string;
@@ -105,13 +105,13 @@ export default async function SozlukDetayPage(paramsPromise: Promise<{ params: {
           <div className="row suggest-words">
             {suggestedWords.map((item: DictionaryItem) => (
               <div key={item.id} className="col-lg-4 col-md-6">
-                <a href={`/sozluk/${item.slug}`} className="dictionary-item">
+                <Link href={`/sozluk/${item.slug}`} className="dictionary-item">
                   <h4 className="dictionary-item__title">{item.title}</h4>
                   <p className="dictionary-item__summary">{item.summary}</p>
                   <span className="dictionary-item__link">
                     Devamını Oku <span className="icon-arrow-right"></span>
                   </span>
-                </a>
+                </Link>
               </div>
             ))}
           </div>

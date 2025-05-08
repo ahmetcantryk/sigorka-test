@@ -5,7 +5,7 @@ import FaqList from '../components/common/FaqList';
 import ProductBanner from '../components/common/ProductBanner';
 import '../../styles/subpage.min.css';
 import '../../styles/armorbroker.css';
-
+import Link from 'next/link';
 
 
 
@@ -157,9 +157,9 @@ export default function ZorunluTrafikSigortasiPage() {
                   <p>En uygun tekliflerle aracınızı kaskolamak için şimdi teklif alın.</p>
                 </div>
                 <div className="offer-banner__cta">
-                  <a className="btn btn-wide btn-tertiary" href="/oto/standart-trafik" target="_self">
+                  <Link className="btn btn-wide btn-tertiary" href="/oto/standart-trafik" target="_self">
                     Hemen Teklif Alın
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
