@@ -112,7 +112,7 @@ export default function Promo() {
 
             </h1>
           </div>
-          <div className="layer" id="basaklar" ref={(el) => (layersRef.current[0] = el!)}>
+          <div className="layer" id="basaklar" ref={(el) => { if (el) layersRef.current[0] = el; }}>
             <Image
               src="/images/promo/basaklar.png"
               alt="Başaklar"
@@ -134,7 +134,7 @@ export default function Promo() {
               unoptimized
             />
           </div>
-          <div className="layer" id="bugday-tarlasi" ref={(el) => (layersRef.current[1] = el!)}>
+          <div className="layer" id="bugday-tarlasi" ref={(el) => { if (el) layersRef.current[1] = el; }}>
             <Image
               src="/images/promo/bugday-tarlasi.png"
               alt="Buğday Tarlası"
@@ -156,7 +156,7 @@ export default function Promo() {
               unoptimized
             />
           </div>
-          <div className="layer" id="uzaktaki-tarlalar" ref={(el) => (layersRef.current[2] = el!)}>
+          <div className="layer" id="uzaktaki-tarlalar" ref={(el) => { if (el) layersRef.current[2] = el; }}>
             <Image
               src="/images/promo/uzak-tarla.png"
               alt="Uzaktaki Tarlalar"
@@ -178,7 +178,7 @@ export default function Promo() {
               unoptimized
             />
           </div>
-          <div className="layer" id="tepeler" ref={(el) => (layersRef.current[3] = el!)}>
+          <div className="layer" id="tepeler" ref={(el) => { if (el) layersRef.current[3] = el; }}>
             <Image
               src="/images/promo/tepeler.png"
               alt="Tepeler"
@@ -200,7 +200,7 @@ export default function Promo() {
               unoptimized
             />
           </div>
-          <div className="layer" id="zemin" ref={(el) => (layersRef.current[4] = el!)}>
+          <div className="layer" id="zemin" ref={(el) => { if (el) layersRef.current[4] = el; }}>
             <Image
               src="/images/promo/zemin.png"
               alt="Zemin"
@@ -222,7 +222,7 @@ export default function Promo() {
               unoptimized
             />
           </div>
-          <div className="layer" id="bulutlar" ref={(el) => (layersRef.current[5] = el!)}>
+          <div className="layer" id="bulutlar" ref={(el) => { if (el) layersRef.current[5] = el; }}>
             <Image
               src="/images/promo/bulutlar.png"
               alt="Bulutlar"
@@ -244,7 +244,7 @@ export default function Promo() {
               unoptimized
             />
           </div>
-          <div className="layer" id="degirmen" ref={(el) => (layersRef.current[6] = el!)}>
+          <div className="layer" id="degirmen" ref={(el) => { if (el) layersRef.current[6] = el; }}>
             <Image
               src="/images/promo/degirmen.png"
               alt="Değirmen"
@@ -266,7 +266,7 @@ export default function Promo() {
               unoptimized
             />
           </div>
-          <div className="layer" id="pervane" ref={(el) => (layersRef.current[7] = el!)}>
+          <div className="layer" id="pervane" ref={(el) => { if (el) layersRef.current[7] = el; }}>
             <Image
               src="/images/promo/pervane.png"
               alt="Pervane"
@@ -288,7 +288,7 @@ export default function Promo() {
               unoptimized
             />
           </div>
-          <div className="layer" id="sahne-2" ref={(el) => (layersRef.current[8] = el!)}>
+          <div className="layer" id="sahne-2" ref={(el) => { if (el) layersRef.current[8] = el; }}>
             <Image
               src="/images/promo/sahne-2-2.png"
               alt="Sahne 2"

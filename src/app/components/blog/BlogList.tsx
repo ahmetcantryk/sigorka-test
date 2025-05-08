@@ -43,10 +43,10 @@ const BlogList: React.FC<BlogListProps> = ({ blogs, selectedCategoryId }) => {
     const nextThree = blogsWithSlug.slice(6, 9);
     const rest = blogsWithSlug.slice(9, visibleCount);
 
-    firstSix.forEach(blog => items.push(<BlogCard key={blog.id} blog={blog} />));
+    firstSix.forEach(blog => items.push(<BlogCard key={blog.id} blog={{...blog, id: String(blog.id)}} />));
     if (nextThree.length > 0) items.push(<ProposalCta key="proposal-cta" />);
-    nextThree.forEach(blog => items.push(<BlogCard key={blog.id} blog={blog} />));
-    rest.forEach(blog => items.push(<BlogCard key={blog.id} blog={blog} />));
+    nextThree.forEach(blog => items.push(<BlogCard key={blog.id} blog={{...blog, id: String(blog.id)}} />));
+    rest.forEach(blog => items.push(<BlogCard key={blog.id} blog={{...blog, id: String(blog.id)}} />));
     return items;
   };
 

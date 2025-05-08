@@ -22,9 +22,8 @@ interface Blog {
   categories?: Category[];
 }
 
-export default async function BlogDetailPage(paramsPromise: Promise<{ params: { slug: string } }>) {
-  const { params } = await paramsPromise;
-  const { slug } = params;
+export default async function BlogDetailPage({params}: {params: Promise<{ id: string }>}) {
+  const { id: slug } = await params;
   const res = await fetch('http://localhost:3000/content/blogs.json', { cache: 'no-store' });
   const blogs = await res.json() as Blog[];
   const blog = blogs.find((b: Blog) => (b.slug || slugify(b.title)) === slug);
@@ -95,7 +94,14 @@ export default async function BlogDetailPage(paramsPromise: Promise<{ params: { 
           </div>
           <h3 className="blog-section__title">Benzer Yazılar</h3>
           <div className="row suggest-blogs">
-            {similarBlogs.map((b) => <BlogCard key={b.id} blog={{...b, slug: b.slug || slugify(b.title)}} />)}
+            {similarBlogs.map((b) => <BlogCard key={b.id} blog={{
+              id: String(b.id || 0),
+              title: b.title,
+              summary: '',
+              imageUrl: b.imageUrl || '/images/no-image.jpg',
+              slug: b.slug || slugify(b.title),
+              date: b.date
+            }} />)}
           </div>
         </div>
       </section>
