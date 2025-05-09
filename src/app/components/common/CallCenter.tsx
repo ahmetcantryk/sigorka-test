@@ -6,7 +6,7 @@ const CallCenter: React.FC = () => (
     <div className="call-center__container container">
       <div className="call-center__icon">
         <Image
-          src="/images/call-center.png"
+          src="/images/call-center.svg"
           alt="Call Center"
           width={400}
           height={400}

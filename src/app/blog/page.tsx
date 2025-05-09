@@ -26,6 +26,7 @@ interface Blog {
 export const metadata: Metadata = {
   title: 'Blog | Sigorka',
   description: 'Sigorka blog sayfasında sigorta, finans ve güvenlik konularındaki tüm güncel yazılarımızı bulabilirsiniz.',
+  metadataBase: new URL('https://sigorka.com'),
   alternates: {
     canonical: "https://sigorka.com/blog"
   },

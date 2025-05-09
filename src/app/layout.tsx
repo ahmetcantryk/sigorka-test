@@ -42,6 +42,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Sigorka - Katılım Sigortacılığı',
   description: 'Sigorka ile güvenli ve uygun fiyatlı sigorta çözümleri. Kasko, trafik, sağlık, DASK ve daha fazlası için hemen teklif alın.',
+  metadataBase: new URL('https://sigorka.com'),
   openGraph: {
     type: 'website',
     locale: 'tr_TR',
