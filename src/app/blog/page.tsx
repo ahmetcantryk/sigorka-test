@@ -3,6 +3,7 @@ import BlogClientArea from '../components/blog/BlogClientArea';
 import '../../styles/main.min.css';
 import '../../styles/subpage.min.css';
 import '../../styles/armorbroker.css';
+import { Metadata } from 'next';
 
 
 interface Category {
@@ -22,22 +23,31 @@ interface Blog {
   categories?: Category[];
 }
 
-export const metadata = {
-  title: "Sigorta Blogu - Güncel Haberler ve İpuçları | Sigorka",
-  description: "Sigortacılıkla ilgili güncel yazılar, ipuçları ve rehberler için blog sayfamızı ziyaret edin. Daha fazlası için sitemizi ziyaret ederek hizmetlere göz atın.",
+export const metadata: Metadata = {
+  title: 'Blog | Sigorka',
+  description: 'Sigorka blog sayfasında sigorta, finans ve güvenlik konularındaki tüm güncel yazılarımızı bulabilirsiniz.',
   alternates: {
     canonical: "https://sigorka.com/blog"
   },
   openGraph: {
-    title: "Sigorta Blogu - Güncel Haberler ve İpuçları | Sigorka",
-    description: "Sigortacılıkla ilgili güncel yazılar, ipuçları ve rehberler için blog sayfamızı ziyaret edin. Daha fazlası için sitemizi ziyaret ederek hizmetlere göz atın.",
-    url: "https://sigorka.com/blog",
-    type: "website"
+    title: 'Blog | Sigorka',
+    description: 'Sigorka blog sayfasında sigorta, finans ve güvenlik konularındaki tüm güncel yazılarımızı bulabilirsiniz.',
+    url: 'https://sigorka.com/blog',
+    type: 'website',
+    images: [
+      {
+        url: '/images/sigorka-og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Sigorka Blog'
+      }
+    ]
   },
   twitter: {
-    title: "Sigorta Blogu - Güncel Haberler ve İpuçları | Sigorka",
-    description: "Sigortacılıkla ilgili güncel yazılar, ipuçları ve rehberler için blog sayfamızı ziyaret edin. Daha fazlası için sitemizi ziyaret ederek hizmetlere göz atın.",
-    card: "summary_large_image"
+    card: 'summary_large_image',
+    title: 'Blog | Sigorka',
+    description: 'Sigorka blog sayfasında sigorta, finans ve güvenlik konularındaki tüm güncel yazılarımızı bulabilirsiniz.',
+    images: ['/images/sigorka-og-image.png']
   }
 };
 

@@ -42,6 +42,28 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Sigorka - Katılım Sigortacılığı',
   description: 'Sigorka ile güvenli ve uygun fiyatlı sigorta çözümleri. Kasko, trafik, sağlık, DASK ve daha fazlası için hemen teklif alın.',
+  openGraph: {
+    type: 'website',
+    locale: 'tr_TR',
+    url: 'https://sigorka.com',
+    siteName: 'Sigorka - Katılım Sigortacılığı',
+    title: 'Sigorka - Katılım Sigortacılığı',
+    description: 'Sigorka ile güvenli ve uygun fiyatlı sigorta çözümleri. Kasko, trafik, sağlık, DASK ve daha fazlası için hemen teklif alın.',
+    images: [
+      {
+        url: '/images/sigorka-og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Sigorka - Katılım Sigortacılığı'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sigorka - Katılım Sigortacılığı',
+    description: 'Sigorka ile güvenli ve uygun fiyatlı sigorta çözümleri. Kasko, trafik, sağlık, DASK ve daha fazlası için hemen teklif alın.',
+    images: ['/images/sigorka-og-image.png']
+  }
 };
 
 export default function RootLayout({

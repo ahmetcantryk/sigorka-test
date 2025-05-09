@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { slugify } from './slugify';
 
 interface BlogCardProps {
   blog: {
@@ -13,9 +15,12 @@ interface BlogCardProps {
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
+  // Blog slug değerini kontrol et, yoksa başlıktan oluştur
+  const blogSlug = blog.slug || slugify(blog.title);
+  
   return (
     <div className="col-lg-4 col-md-6">
-      <a href={`/blog/${blog.slug}`} target="_self" className="blog-post">
+      <Link href={`/blog/${blogSlug}`} className="blog-post">
         <div className="blog-post__img">
           <Image 
             src={blog.imageUrl}
@@ -34,7 +39,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
             Devamını Oku <span className="icon-arrow-right"></span>
           </span>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };

@@ -7,6 +7,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Image from 'next/image';
+import Link from 'next/link';
+import { slugify } from './slugify';
 
 interface Blog {
   id: number;
@@ -64,7 +66,7 @@ export default function BlogPromoSlider({ promoBlogs }: BlogPromoSliderProps) {
             <div className="blog-promo__item-content">
               <h3>{blog.title}</h3>
               <p>{blog.summary}</p>
-              <a href={`/blog/${blog.slug || ''}`} target="_self" className="btn btn-outline">Devamını Oku</a>
+              <Link href={`/blog/${blog.slug || slugify(blog.title)}`} target="_self" className="btn btn-outline">Devamını Oku</Link>
             </div>
           </div>
         </SwiperSlide>
